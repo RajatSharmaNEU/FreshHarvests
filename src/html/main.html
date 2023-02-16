@@ -1,4 +1,4 @@
-<!-- <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -6,98 +6,41 @@
     <title>Fresh Harvests</title>
 </head>
 <body>
-<div class="container py-4 px-3 mx-auto">
-    <div id="liveAlertPlaceholder"></div>
-    <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
+<nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand mb-0 h1" href="/">Fresh Harvest</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav nav me-auto mb-2 mb-lg-0 ">
+                <a class="nav-link" aria-current="page" href="/">Home</a>
+            </div>
+            <div class="nav navbar-nav">
+                <a class="nav-link align-self-end" href="/signUp.html">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div id="#home" class="card text-light">
+    <img class="card-image" src="../images/grocery.jpg" alt="Grocery">
+    <div class="card-img-overlay">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h2 class="card-title">Groceries</h2>
+                    <p class="card-text">
+                        Welcome to our grocery store! We are dedicated to providing our customers with a wide variety of fresh and high-quality products, including fresh produce, meat, dairy, bakery items, and household essentials. Our store is designed to offer a comfortable and convenient shopping experience, with spacious aisles, friendly staff, and competitive prices.
+                    </p>
+                    <p class="d-none d-sm-block card-text">
+                        Whether you're a busy parent, a professional on-the-go, or just looking for the best deals on your weekly groceries, we've got you covered. So come on in, explore our selection, and let us help you bring home everything you need to feed your family and live well.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-</body>
-</html> -->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fresh Harvests</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <!-- Custom CSS -->
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
-</head>
-<body>
-  <!-- Navigation bar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <a class="navbar-brand" href="#">Fresh Groceries</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#groceries-section">Groceries</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#about-section">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="signUp.html">Login</a>
-        </li>
-      </ul>
-    </div>
-    <a class="navbar-brand ml-auto" href="main.html">
-        <img src="https://example.com/icon.png" alt="Home" width="30" height="30">
-      </a>
-  </nav>
-
-  <!-- Groceries section -->
-  <section id="groceries-section" class="my-5">
-    <div class="container">
-      <h2>Groceries</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, enim a lobortis lobortis, dolor ante venenatis odio, ac venenatis orci velit vel magna.</p>
-    </div>
-  </section>
-
-  <!-- About section -->
-  <section id="about-section" class="my-5">
-    <div class="container">
-      <h2>About</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, enim a lobortis lobortis, dolor ante venenatis odio, ac venenatis orci velit vel magna.</p>
-    </div>
-  </section>
-
-  <!-- Login section -->
-  <section id="login-section" class="my-5">
-    <div class="container">
-      <h2>Login</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, enim a lobortis lobortis, dolor ante venenatis odio, ac venenatis orci velit vel magna.</p>
-    </div>
-  </section>
-
- <!-- Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-<!-- Custom JS -->
-<script>
-  $(document).ready(function() {
-    // Smooth scrolling to section when nav link is clicked
-    $('a.nav-link').on('click', function(event) {
-      if (this.hash !== '') {
-        event.preventDefault();
-        var hash = this.hash;
-        $('html, body').animate({
-          scrollTop: $(hash).offset().top
-        }, 800, function(){
-          window.location.hash = hash;
-        });
-      }
-    });
-  });
-</script>
 </body>
 </html>
