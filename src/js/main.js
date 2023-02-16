@@ -1,7 +1,9 @@
 // Import our custom CSS
-import '../scss/styles.scss'
+import '../scss/styles.scss';
 
-const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+import * as bootstrap from 'bootstrap';
+
+const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
 
 const alert = (message, type) => {
     const wrapper = document.createElement('div')
