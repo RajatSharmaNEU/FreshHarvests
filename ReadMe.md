@@ -12,7 +12,7 @@ The website will first display a home page where it allows the user to sign up a
 
 3: <style> This is used to store styling information for website.
 
-4: <script>This is used for embedding javascript code in an HTML page. 
+4: <script>This is used for embedding javascript code in an HTML page.
 
 5: <body>This tag contains all elements and it defines main part of document
 
