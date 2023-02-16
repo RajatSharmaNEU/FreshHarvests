@@ -1,8 +1,6 @@
 // Import our custom CSS
 import '../scss/styles.scss'
 
-// Import all of Bootstrap's JS
-import * as bootstrap from 'bootstrap'
 const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
 
 const alert = (message, type) => {
