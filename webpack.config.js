@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: './src/js/main.js',
     output: {
-        filename: 'main.js',
+        filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
     devServer: {
@@ -43,7 +43,17 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Fresh Harvests',
+            inject: true,
+            chunks: ['index'],
             template: 'src/index.html',
+            filename: 'index.html',
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Fresh Harvests',
+            inject: true,
+            chunks: ['sign-up'],
+            template: 'src/sign-up.html',
+            filename: 'sign-up.html',
         }),
     ],
 }
