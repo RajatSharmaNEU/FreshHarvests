@@ -1,9 +1,6 @@
 const User = require("../models/userModel");
 const validators = require("../utilities/validators");
 const bcrypt = require("bcrypt");
-const regUserName = /^[a-zA-Z]+(?:[\s.]+[a-zA-Z]+)*$/;
-const regPassword = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-const regEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const userController = {
     'createUser': async (req, res) => {
@@ -26,7 +23,6 @@ const userController = {
                     err.status = 500;
                     throw err;
                 }
-                console.log(hash);
 
                 const newUser = new User({
                     firstName,
@@ -67,7 +63,6 @@ const userController = {
                     err.status = 500;
                     throw err;
                 }
-                console.log(hash);
 
                 User.updateOne({ email },{ firstName, lastName, password: hash })
                 .then(() => {
