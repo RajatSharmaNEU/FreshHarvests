@@ -1,5 +1,3 @@
-// app/userRoute.js
-// grab the nerd model we just created
 const express = require("express");
 const {createUser, editUser, deleteUser, getAll} = require("../controllers/userController");
 
