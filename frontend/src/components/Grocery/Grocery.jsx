@@ -4,6 +4,7 @@ import fetchMarketItems from '../../API/fetchMarketItems';
 import Items from './Items';
 import Cart from './Cart';
 import {Container} from "react-bootstrap";
+import Navigation from "./Navigation";
 
 const Grocery = () => {
     const [cart, setCart] = useState(() => {
@@ -44,6 +45,7 @@ const Grocery = () => {
     console.log('App Re-rendered');
     return (
         <Container fluid className="p-0">
+            <Navigation cart={cart}/>
             <Routes>
                 <Route exact path="items"
                        element={<Items items={items} addItem={addItem} removeItem={removeItem}/>}
