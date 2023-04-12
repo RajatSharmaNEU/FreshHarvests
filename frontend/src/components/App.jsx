@@ -4,6 +4,7 @@ import Home from "./Home/Home";
 import Login from "./Login/Login";
 import Register from "./Register/Register";
 import Signup from "./Signup/Signup";
+import Grocery from "./Grocery/Grocery";
 
 function App() {
     return (
@@ -13,7 +14,7 @@ function App() {
                 <Route exact path="/login" Component={Login}/>
                 <Route exact path="/register" Component={Register}/>
                 <Route exact path="/signup" Component={Signup}/>
-                <Route exact path="/dashboard" element={<div>Dashboard</div>}/>
+                <Route exact path="/grocery/*" Component={Grocery}/>
             </Routes>
         </Router>
     );
