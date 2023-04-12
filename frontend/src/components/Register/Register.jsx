@@ -5,6 +5,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import registerImage from "../../assets/register.png";
 import {sendForm} from "@emailjs/browser";
 import {useNavigate} from "react-router-dom";
+import localStorageService from "../../configs/localStorageService";
 
 const Register = () => {
     const [openSuccess, setOpenSuccess] = React.useState(false);
@@ -50,7 +51,7 @@ const Register = () => {
         const otp = document.getElementById("password").value;
         console.log(otp);
         if (otp === "2234") {
-            // localStorageService.setVerifiedUser("true");
+            localStorageService.setVerifiedUser("true");
             navigate("/signup");
         } else {
             setOpenIncorrectOTP(true);

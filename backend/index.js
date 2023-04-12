@@ -11,8 +11,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use("/user", userRouter);
-app.use("/user", loginRouter);
+app.use("/", userRouter);
+app.use("/", loginRouter);
 
 app.listen(3000);
 console.log("Server Started at port 3000");

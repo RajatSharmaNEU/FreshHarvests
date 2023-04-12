@@ -4,7 +4,7 @@ const {createUser, editUser, deleteUser, getAll} = require("../controllers/userC
 const router = express.Router();
 
 //Create User
-router.post('/create', createUser)
+router.post('/signup', createUser)
 
 // Edit User
 router.put('/edit', editUser)

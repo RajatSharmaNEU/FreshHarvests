@@ -4,12 +4,14 @@ const bcrypt = require("bcrypt");
 
 const userController = {
     'createUser': async (req, res) => {
-        const { firstName, lastName, email, password } = req.body;
+        const { firstName, lastName, email, password, address, phoneNumber } = req.body;
         try {
             validators.validateFirstName(firstName);
             validators.validateLastName(lastName);
             validators.validateEmail(email);
             validators.validatePassword(password);
+            validators.validateAddress(address);
+            validators.validatePhoneNumber(phoneNumber);
 
             const existingUser = await User.findOne({email});
             if (existingUser) {
@@ -28,7 +30,9 @@ const userController = {
                     firstName,
                     lastName,
                     email,
-                    password
+                    password,
+                    address,
+                    phoneNumber
                 })
                 newUser.save().then(() => {
                     res.send({
