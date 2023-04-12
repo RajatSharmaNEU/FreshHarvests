@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const validators = require("../utilities/validators");
 
 const loginController = {
-    'loginUser': async (req, res) => {
+    'login': async (req, res) => {
         const {email, password} = req.body;
         try {
             validators.validateEmail(email);
@@ -24,16 +24,18 @@ const loginController = {
                     throw err;
                 }
                 if (result) {
-                    const {firstName, lastName, email} = existingUser;
+                    const {firstName, lastName, email, address, phoneNumber} = existingUser;
                     res.status(200).send({
                         success: true,
                         message: "User authenticated successfully.",
-                        user: {firstName, lastName, email}
+                        user: {firstName, lastName, email, address, phoneNumber}
                     });
                 } else {
-                    let err = new Error('Unauthorized, please provide valid password.');
-                    err.status = 401;
-                    throw err;
+                    res.status(401);
+                    res.json({
+                        message: "Unauthorized, please provide valid password.",
+                        success: false
+                    });
                 }
             })
         } catch (err) {

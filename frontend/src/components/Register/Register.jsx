@@ -84,7 +84,7 @@ const Register = () => {
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "center",
-                        marginTop: 18,
+                        marginTop: 18
                     }}
                 >
                     <Avatar sx={{m: 1, bgcolor: "secondary.main"}}>

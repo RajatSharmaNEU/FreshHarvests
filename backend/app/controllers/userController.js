@@ -30,7 +30,7 @@ const userController = {
                     firstName,
                     lastName,
                     email,
-                    password,
+                    password: hash,
                     address,
                     phoneNumber
                 })

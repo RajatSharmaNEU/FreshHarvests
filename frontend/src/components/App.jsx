@@ -13,6 +13,7 @@ function App() {
                 <Route exact path="/login" Component={Login}/>
                 <Route exact path="/register" Component={Register}/>
                 <Route exact path="/signup" Component={Signup}/>
+                <Route exact path="/dashboard" element={<div>Dashboard</div>}/>
             </Routes>
         </Router>
     );
