@@ -12,6 +12,18 @@ module.exports = () => {
           use: ['babel-loader', 'eslint-loader']
         },
         {
+          test: /\.(jpe?g|png|gif|svg)$/i,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[name].[ext]',
+                outputPath: 'assets/'
+              }
+            }
+          ]
+        },
+        {
           test: /\.s[ac]ss$/i,
           use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
         },
