@@ -3,6 +3,7 @@ import {ChakraProvider, extendBaseTheme} from "@chakra-ui/react";
 import MainSection from "./sections/MainSection/MainSection";
 import Connect from "./sections/Connect/Connect";
 import Deals from "./sections/Deals/Deals";
+import Feature from "./sections/Feature/Feature";
 
 const Home = () => {
 
@@ -19,6 +20,7 @@ const Home = () => {
                     <MainSection/>
                     <Connect />
                     <Deals />
+                    <Feature/>
                 </section>
             </ChakraProvider>
         </>
