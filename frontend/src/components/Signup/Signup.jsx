@@ -111,7 +111,7 @@ export default function SignUp() {
     };
 
     useEffect(() => {
-        if (!localStorageService.getVerifiedUser() || localStorageService.getVerifiedUser() == "false") {
+        if (!localStorageService.getVerifiedUser() || localStorageService.getVerifiedUser() === "false") {
             navigate("/register");
         }
     })

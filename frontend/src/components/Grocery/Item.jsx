@@ -6,9 +6,10 @@ import itemShape from "../../proptypes/item";
 const Item = (props) => {
   const { item, addItem, removeItem } = props;
   console.log('Item Re-rendered');
+  const itemImage = require(`../../images/${item.name.toLowerCase()}.svg`);
   return (
     <Card className="my-3 mx-0" bg="light">
-      <Card.Img src={`images/${item.name.toLowerCase()}.svg`} className="mx-auto w-25 pt-3"/>
+      <Card.Img src={itemImage} className="mx-auto w-25 pt-3"/>
       <Card.Body className="text-center">
         <Card.Title>{item.name}</Card.Title>
         <Card.Text>Price - {item.price}$</Card.Text>

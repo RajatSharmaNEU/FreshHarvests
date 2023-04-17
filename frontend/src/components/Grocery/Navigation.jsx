@@ -3,6 +3,8 @@ import {Badge, Button, Nav, Navbar} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import {arrayOf} from 'prop-types';
 import itemShape from '../../proptypes/item';
+import GroceryCartIcon from '../../images/grocery-cart.svg';
+import CartIcon from '../../images/cart.svg';
 
 const Navigation = (props) => {
     const {cart} = props;
@@ -13,7 +15,7 @@ const Navigation = (props) => {
             <Link to="/grocery">
                 <Navbar.Brand>
                     <img
-                        src="../../images/grocery-cart.svg"
+                        src={GroceryCartIcon}
                         width="30"
                         height="30"
                         alt="React Shop"
@@ -29,7 +31,7 @@ const Navigation = (props) => {
                         <Button variant="tertiary">
                             <Badge variant="light">{cartItems}</Badge>
                             <img
-                                src="../../images/cart.svg"
+                                src={CartIcon}
                                 width="30"
                                 height="30"
                                 alt="Cart"
