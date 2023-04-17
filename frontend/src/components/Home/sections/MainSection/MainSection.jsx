@@ -17,12 +17,8 @@ const MainSection = () => {
                 "url": "#connect"
             },
             {
-                "name": "College",
-                "url": "#college"
-            },
-            {
-                "name": "Projects",
-                "url": "#projects"
+                "name": "Deals",
+                "url": "#deals"
             },
             {
                 "name": "Features",
