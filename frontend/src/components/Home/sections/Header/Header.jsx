@@ -135,7 +135,7 @@ function Header(props) {
                             initial={{ y: -100 }} animate={{ y: 0 }} transition={{ delay: 0.6 }}
                             className={`nav_item push_right`}
                         >
-                            <a ref={a1Ref} href="#home">Home</a>
+                            <a ref={a1Ref} href="#connect">Connect</a>
                         </motion.li>
                         <motion.li
                             initial={{ y: -100 }} animate={{ y: 0 }} transition={{ delay: 0.7 }}

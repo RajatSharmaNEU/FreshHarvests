@@ -1,6 +1,8 @@
 import React from "react";
 import {ChakraProvider, extendBaseTheme} from "@chakra-ui/react";
 import MainSection from "./sections/MainSection/MainSection";
+import Connect from "./sections/Connect/Connect";
+import Deals from "./sections/Deals/Deals";
 
 const Home = () => {
 
@@ -15,6 +17,8 @@ const Home = () => {
             <ChakraProvider theme={theme}>
                 <section className="main_sec home_page">
                     <MainSection/>
+                    <Connect />
+                    <Deals />
                 </section>
             </ChakraProvider>
         </>
