@@ -4,7 +4,6 @@ import Circle from "../../Circle";
 import Triangle from "../../Triangle";
 import TextContent from "../../TextContent";
 import EventsImage from "../../../../images/EventsImage.jpg";
-
 import { Fade } from "react-awesome-reveal";
 
 const Events = () => {

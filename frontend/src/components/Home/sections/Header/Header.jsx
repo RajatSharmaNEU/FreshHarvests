@@ -159,7 +159,7 @@ function Header(props) {
                             initial={{ y: -100 }} animate={{ y: 0 }} transition={{ delay: 1.0 }}
                             className={`nav_item`}
                         >
-                            <a ref={a5Ref} href="#competitions">Competitions</a>
+                            <a ref={a5Ref} href="#careers">Careers</a>
                         </motion.li>
                         <motion.li
                             initial={{ y: -100 }} animate={{ y: 0 }} transition={{ delay: 1.1 }}

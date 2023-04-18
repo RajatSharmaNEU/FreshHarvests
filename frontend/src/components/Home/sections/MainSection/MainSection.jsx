@@ -29,8 +29,8 @@ const MainSection = () => {
                 "url": "#events"
             },
             {
-                "name": "Competitions",
-                "url": "#competitions"
+                "name": "Careers",
+                "url": "#careers"
             },
             {
                 "name": "Download",
