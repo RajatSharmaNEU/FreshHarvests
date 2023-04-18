@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {Navigate, Route, Routes} from 'react-router-dom';
-import fetchMarketItems from '../../API/fetchMarketItems';
 import Items from './Items';
 import Cart from './Cart';
 import {Container} from "react-bootstrap";
 import Navigation from "./Navigation";
 import Loader from "./Loader";
 import Notify from "./Notify";
+import axios from "../../configs/axiosConfig";
 
 const Grocery = () => {
     const [cart, setCart] = useState(() => {
@@ -19,10 +19,11 @@ const Grocery = () => {
 
     useEffect(() => {
         setLoader(true);
-        fetchMarketItems().then((result) => {
-            setItems(result);
-            setLoader(false);
-        });
+        axios.get("store/getAll")
+            .then((result) => {
+                setItems(result.data[0].items);
+                setLoader(false);
+            });
     }, []);
 
     useEffect(() => {
