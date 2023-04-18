@@ -1,8 +1,8 @@
 import React from "react";
-import { Zoom } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 const Images = ({ src, classes }) => {
   return (
-    <Zoom cascade className="image-container">
+    <Fade cascade className="image-container">
       <img
         className={`model wow fadeInUp ${classes}`}
         data-wow-delay=".3s"
@@ -13,7 +13,7 @@ const Images = ({ src, classes }) => {
         }}
         alt="mobile"
       />
-    </Zoom>
+    </Fade>
   );
 };
 
