@@ -17,6 +17,9 @@ Bootstrap components :
 11. Input Group and more
 
 Development Setup - Run following commands in the Terminal
-- `npm install`
-- `npm run start`
 
+`Database - brew services restart mongodb-community`
+
+`Backend - cd backend --> npm run start` 
+
+`Frontend - cd frontend --> npm run start`
