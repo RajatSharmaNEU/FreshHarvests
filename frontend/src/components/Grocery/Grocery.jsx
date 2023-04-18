@@ -56,7 +56,7 @@ const Grocery = () => {
             {notify && <Notify variant={notify.variant} message={notify.message}/>}
             <Routes>
                 <Route exact path="items"
-                       element={<Items items={items} addItem={addItem} removeItem={removeItem}/>}
+                       element={<Items cart={cart} items={items} addItem={addItem} removeItem={removeItem}/>}
                 />
                 <Route exact path="cart"
                        element={<Cart cart={cart} setCart={setCart} setLoader={setLoader} setNotify={setNotify}/>}/>
