@@ -6,6 +6,7 @@ import Deals from "./sections/Deals/Deals";
 import Feature from "./sections/Feature/Feature";
 import Events from "./sections/Events/Events";
 import Careers from "./sections/Careers/Careers";
+import Download from "./sections/Download/Download";
 
 const Home = () => {
 
@@ -25,6 +26,7 @@ const Home = () => {
                     <Feature/>
                     <Events/>
                     <Careers/>
+                    <Download/>
                 </section>
             </ChakraProvider>
         </>

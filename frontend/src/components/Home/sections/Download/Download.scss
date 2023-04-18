@@ -1,0 +1,56 @@
+.scrollcontainer {
+    background-image: linear-gradient(90deg, #5722ff 0, #8103ff 51%, #5722ff 100%);
+}
+
+.scrollcontent {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    padding: 200px 0 350px 0;
+    color: white;
+    background-position: 50% 0;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../../../../images/screen-4.png");
+}
+
+.download-box {
+    padding: 0 150px;
+}
+
+.download-box h1 {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.download-box p {
+    font-size: 1.5rem;
+    font-family: var(--open-sans-font-family);
+    font-weight: 400;
+}
+
+@media only screen and (min-width: 800px) {
+    .img-container {
+        display: inline-flex;
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 768px) {
+    .img-container {
+        display: block;
+    }
+
+    .scrollcontent {
+        background-image: none;
+        padding: 100px 0 320px 0;
+    }
+
+    .download-box {
+        padding: 0 0 0 30px;
+    }
+
+    .download-box h1 {
+        font-size: 2.5rem;
+    }
+}
