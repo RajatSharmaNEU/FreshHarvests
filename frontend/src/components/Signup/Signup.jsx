@@ -14,7 +14,7 @@ import Container from "@mui/material/Container";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {InputLabel} from "@mui/material";
 import {useNavigate} from "react-router-dom";
-import signUpBackground from "../../assets/register.png";
+import signUpBackground from "../../images/agronomy.png";
 import localStorageService from "../../configs/localStorageService";
 import {useState, useEffect} from "react";
 import axios from "../../configs/axiosConfig";

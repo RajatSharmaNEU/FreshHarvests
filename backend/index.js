@@ -14,6 +14,6 @@ app.use(bodyParser.json());
 app.use("/", userRouter);
 app.use("/", loginRouter);
 
-app.listen(3000);
-console.log("Server Started at port 3000");
+app.listen(9001);
+console.log("Server Started at port 9001");
 module.exports = app;

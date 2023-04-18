@@ -7,7 +7,7 @@ import EndPointLoader from '../../components/EndPointLoader/EndPointLoader';
 import LoginIcon from '@mui/icons-material/Login';
 import Link from "@mui/material/Link";
 import Copyright from "../Copyright/Copyright";
-import registerImage from "../../assets/register.png";
+import registerImage from "../../images/agronomy.png";
 import Snackbar from '../../components/SnackBar/SnackBar';
 
 function Login() {

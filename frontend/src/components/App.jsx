@@ -5,6 +5,7 @@ import Login from "./Login/Login";
 import Register from "./Register/Register";
 import Signup from "./Signup/Signup";
 import Grocery from "./Grocery/Grocery";
+import "./App.scss";
 
 function App() {
     return (

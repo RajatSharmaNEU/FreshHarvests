@@ -2,7 +2,7 @@ import React, {useRef} from "react";
 import {Alert, Avatar, Box, Button, Grid, Paper, Snackbar, TextField, Typography} from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
-import registerImage from "../../assets/register.png";
+import registerImage from "../../images/agronomy.png";
 import {sendForm} from "@emailjs/browser";
 import {useNavigate} from "react-router-dom";
 import localStorageService from "../../configs/localStorageService";

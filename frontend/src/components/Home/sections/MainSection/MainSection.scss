@@ -1,0 +1,82 @@
+.hero {
+    background-image: url("../../../../images/bg-parallax-2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center 0px;
+    position: relative;
+    padding-top: 150px;
+    padding-bottom: 120px;
+}
+
+.hero.style-curve {
+    padding-top: 120px;
+    padding-bottom: 0;
+    height: 780px;
+    overflow: hidden;
+}
+
+.text-md-right {
+    margin-top: 100px;
+}
+
+.overly {
+    position: relative;
+}
+
+.grdnt-blue.overly:before {
+    background-image: -webkit-linear-gradient(90deg, #5722ff 0, #8103ff 51%, #5722ff 100%);
+    background-image: linear-gradient(90deg, #5722ff 0, #8103ff 51%, #5722ff 100%);
+}
+
+.overly:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0.8;
+}
+
+.style-curve:after {
+    background: url("../../../../images/img-curve.png") bottom no-repeat;
+    z-index: 1;
+}
+
+[class*="bg-trans"]:before,
+[class*="style-"]:after {
+    position: absolute;
+    background-size: 100% !important;
+    content: "";
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    top: 0;
+}
+
+.main_title {
+    color: var(--tertiary-color);
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+@media only screen and (max-width: 767px) {
+    .hero.style-curve {
+        padding-top: 0px;
+        height: 900px;
+    }
+
+    .text-md-right {
+        margin-top: 50px;
+    }
+
+    .download {
+        margin-top: -25px;
+    }
+}
+
+.image-container {
+    position: relative;
+    z-index: 2;
+}
