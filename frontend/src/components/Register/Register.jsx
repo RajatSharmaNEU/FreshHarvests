@@ -1,9 +1,8 @@
 import React, {useRef} from "react";
 import {Alert, Avatar, Box, Button, Grid, Paper, Snackbar, TextField, Typography} from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-
+import axios from "../../configs/axiosConfig";
 import registerImage from "../../images/agronomy.png";
-import {sendForm} from "@emailjs/browser";
 import {useNavigate} from "react-router-dom";
 import localStorageService from "../../configs/localStorageService";
 
@@ -20,40 +19,31 @@ const Register = () => {
         setOpenSuccess(false);
     };
 
-    const handleSubmitOTP = (event) => {
+    const handleSendOTP = async (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get("email"),
-            password: data.get("password"),
-        });
-
-        sendForm(
-            "service_awa4i8c",
-            "template_ds4gz3j",
-            form.current,
-            "an0H3tvHS0noMqv5O"
-        )
-            .then(
-                (result) => {
-                    console.log(result.text);
-                },
-                (error) => {
-                    console.log(error.text);
-                }
-            );
-        setOpenSuccess(true);
-        console.log(form);
+        const email = document.getElementById("email").value;
+        try {
+            const result = await axios.post("/verify/sendOtp", {email});
+            if (result.status === 200) {
+                setOpenSuccess(true);
+            }
+        } catch (e) {
+            console.log(e);
+        }
     };
 
-    const handleSubmit = () => {
-        console.log("inside handle submit");
-        const otp = document.getElementById("password").value;
-        console.log(otp);
-        if (otp === "2234") {
-            localStorageService.setVerifiedUser("true");
-            navigate("/signup");
-        } else {
+    const handleVerifyOtp = async () => {
+        const otp = document.getElementById("otp").value;
+        const email = document.getElementById("email").value
+        try {
+            const result = await axios.post("/verify/verifyOtp", {email, otp});
+            if (result.status === 200) {
+                localStorageService.setVerifiedUser("true");
+                navigate("/signup");
+            } else {
+                setOpenIncorrectOTP(true);
+            }
+        } catch (e) {
             setOpenIncorrectOTP(true);
         }
     };
@@ -97,7 +87,7 @@ const Register = () => {
                         noValidate
                         sx={{mt: 1}}
                     >
-                        <form onSubmit={handleSubmitOTP} ref={form}>
+                        <form onSubmit={handleSendOTP} ref={form}>
                             <TextField
                                 margin="normal"
                                 required
@@ -112,16 +102,17 @@ const Register = () => {
                                 margin="normal"
                                 // required
                                 fullWidth
-                                name="password"
+                                name="otp"
                                 label="Enter OTP"
                                 type="password"
-                                id="password"
-                                autoComplete="current-password"
+                                id="otp"
+                                autoComplete="current-otp"
                             />
                             <Button
                                 type="submit"
                                 variant="contained"
                                 sx={{mt: 3, mb: 2, ml: 20}}
+                                onClick={handleSendOTP}
                             >
                                 Send OTP
                             </Button>
@@ -142,7 +133,7 @@ const Register = () => {
                                 //   type="submit"
                                 variant="contained"
                                 sx={{mt: 3, mb: 2, ml: 2}}
-                                onClick={handleSubmit}
+                                onClick={handleVerifyOtp}
                             >
                                 Verify
                             </Button>
