@@ -1,20 +1,12 @@
 const mongoose = require('mongoose');
 
-module.exports = mongoose.model('Store', {
-    name: {
+module.exports = mongoose.model('Verify', {
+    email: {
         type: String,
-        required: true
+        required: true,
     },
-    items: [
-        {
-            name: {
-                type: String,
-                required: true,
-            },
-            price: {
-                type: Number,
-                required: true,
-            }
-        }
-    ]
+    otp: {
+        type: Number,
+        required: true,
+    }
 })
