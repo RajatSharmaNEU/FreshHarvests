@@ -48,8 +48,6 @@ const Grocery = () => {
             setCart(cart.filter(cartItem => cartItem.name !== item.name));
         }
     };
-
-    console.log('App Re-rendered');
     return (
         <Container fluid className="p-0">
             <Navigation cart={cart}/>
