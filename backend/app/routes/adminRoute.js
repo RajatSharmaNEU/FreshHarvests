@@ -1,8 +1,10 @@
-const express = require("express");
-const {login} = require("../controllers/loginController");
+const express = require('express');
+const {uploadGroceryItems} = require("../controllers/adminController");
+const multer = require("multer");
 
+
+const upload = multer({dest: 'uploads/'});
 const router = express.Router();
-
-router.post('/login', login);
+router.post('/uploadGroceryItems', upload.single('file'), uploadGroceryItems);
 
 module.exports = router

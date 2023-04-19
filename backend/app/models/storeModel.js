@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 module.exports = mongoose.model('Store', {
     name: {
         type: String,
-        required: true
+        required: true,
+        default: 'freshHarvest'
     },
     items: [
         {
