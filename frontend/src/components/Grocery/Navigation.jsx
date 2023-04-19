@@ -25,7 +25,10 @@ const Navigation = (props) => {
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
             <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                 <Nav className="mr-auto">
-                    <Link to="/grocery" className="nav-link">Store</Link>
+                    <Link to="/grocery/" className="nav-link">Store</Link>
+                </Nav>
+                <Nav className="mr-auto">
+                    <Link to="/grocery/manage" className="nav-link">Manage</Link>
                 </Nav>
                 <Nav >
                     <Link to="/grocery/cart">

@@ -6,7 +6,6 @@ import itemShape from "../../proptypes/item";
 const Item = (props) => {
     const {item, addItem, removeItem, itemCount=0} = props;
     const itemCountClass = itemCount > 0 ? "bg-success" : "bg-secondary";
-    console.log('Item Re-rendered');
     const itemImage = require(`../../images/${item.name.toLowerCase()}.svg`);
     return (
         <Card className="my-3 mx-0" bg="light">
