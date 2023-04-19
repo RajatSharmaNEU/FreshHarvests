@@ -3,8 +3,8 @@ import {Badge, Button, Nav, Navbar} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import {arrayOf} from 'prop-types';
 import itemShape from '../../proptypes/item';
-import GroceryCartIcon from '../../images/grocery-cart.svg';
 import CartIcon from '../../images/cart.svg';
+import logoImage from "../../images/agronomy.png";
 
 const Navigation = (props) => {
     const {cart} = props;
@@ -12,21 +12,23 @@ const Navigation = (props) => {
     console.log('Navigation Re-rendered');
     return (
         <Navbar bg="info" expand>
-            <Link to="/grocery">
+            <Link to="/">
                 <Navbar.Brand>
                     <img
-                        src={GroceryCartIcon}
+                        src={logoImage}
                         width="30"
                         height="30"
-                        alt="React Shop"
-                    /> React Shop</Navbar.Brand>
+                        className="m-3"
+                        alt="Fresh Harvest"
+                    />
+                </Navbar.Brand>
             </Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-            <Navbar.Collapse id="basic-navbar-nav">
+            <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                 <Nav className="mr-auto">
-                    <Link to="/grocery/items" className="nav-link">Home</Link>
+                    <Link to="/grocery" className="nav-link">Store</Link>
                 </Nav>
-                <Nav>
+                <Nav >
                     <Link to="/grocery/cart">
                         <Button variant="tertiary">
                             <Badge variant="light">{cartItems}</Badge>
