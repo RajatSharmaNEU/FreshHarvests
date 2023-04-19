@@ -24,5 +24,9 @@ module.exports = mongoose.model('User', {
     phoneNumber: {
         type: String,
         required: true
+    },
+    userType: {
+        type: String,
+        default: 'customer'
     }
 })

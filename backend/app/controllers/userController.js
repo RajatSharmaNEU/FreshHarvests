@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 
 const userController = {
     'createUser': async (req, res) => {
-        const { firstName, lastName, email, password, address, phoneNumber } = req.body;
+        const {firstName, lastName, email, password, address, phoneNumber, userType = 'customer'} = req.body;
         try {
             validators.validateFirstName(firstName);
             validators.validateLastName(lastName);
@@ -12,9 +12,10 @@ const userController = {
             validators.validatePassword(password);
             validators.validateAddress(address);
             validators.validatePhoneNumber(phoneNumber);
+            validators.validateUserType(userType);
 
             const existingUser = await User.findOne({email});
-            if (existingUser) {
+            if (existingUser !== null) {
                 let err = new Error('User already exist with same email id.');
                 err.status = 409;
                 throw err;
@@ -32,7 +33,8 @@ const userController = {
                     email,
                     password: hash,
                     address,
-                    phoneNumber
+                    phoneNumber,
+                    userType
                 })
                 newUser.save().then(() => {
                     res.send({
@@ -44,16 +46,19 @@ const userController = {
             })
         } catch (err) {
             res.status(err.status);
-            res.json({ message: err.message, success: false });
+            res.json({message: err.message, success: false});
         }
     },
     'editUser': async (req, res) => {
-        const { firstName, lastName, email, password } = req.body;
+        const {firstName, lastName, email, password, userType = 'customer', address, phoneNumber} = req.body;
         try {
             validators.validateFirstName(firstName);
             validators.validateLastName(lastName);
             validators.validateEmail(email);
             validators.validatePassword(password);
+            validators.validateAddress(address);
+            validators.validatePhoneNumber(phoneNumber);
+            validators.validateUserType(userType);
 
             const existingUser = await User.findOne({email});
             if (!existingUser) {
@@ -68,17 +73,24 @@ const userController = {
                     throw err;
                 }
 
-                User.updateOne({ email },{ firstName, lastName, password: hash })
-                .then(() => {
-                    res.send({
-                        status: 200,
-                        message: "User updated successfully",
-                    })
+                User.updateOne({email}, {
+                    firstName,
+                    lastName,
+                    password: hash,
+                    address,
+                    phoneNumber,
+                    userType
                 })
+                    .then(() => {
+                        res.send({
+                            status: 200,
+                            message: "User updated successfully",
+                        })
+                    })
             })
         } catch (err) {
             res.status(err.status);
-            res.json({ message: err.message, success: false });
+            res.json({message: err.message, success: false});
         }
     },
     'deleteUser': async (req, res) => {
@@ -100,7 +112,7 @@ const userController = {
             }
         } catch (err) {
             res.status(err.status);
-            res.json({ message: err.message, success: false });
+            res.json({message: err.message, success: false});
         }
     },
     'getAll': async (req, res) => {

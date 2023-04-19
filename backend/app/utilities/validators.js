@@ -6,7 +6,7 @@ const addressRegex = /^[a-zA-Z0-9\s,'-]*$/;
 const phoneNumberRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
 
 const validateFirstName = function (firstName) {
-    if(!firstName || firstName == ""){
+    if (!firstName || firstName == "") {
         let err = new Error('Please enter the First name.');
         err.status = 400;
         throw err;
@@ -20,7 +20,7 @@ const validateFirstName = function (firstName) {
 }
 
 const validateLastName = function (lastName) {
-    if(!lastName || lastName == ""){
+    if (!lastName || lastName == "") {
         let err = new Error('Please enter the Last name.');
         err.status = 400;
         throw err;
@@ -34,7 +34,7 @@ const validateLastName = function (lastName) {
 }
 
 const validateEmail = function (email) {
-    if(!email || email === ""){
+    if (!email || email === "") {
         let err = new Error('Please enter the email.');
         err.status = 400;
         throw err;
@@ -48,7 +48,7 @@ const validateEmail = function (email) {
 }
 
 const validateAddress = function (address) {
-    if(!address || address === ""){
+    if (!address || address === "") {
         let err = new Error('Please enter the address.');
         err.status = 400;
         throw err;
@@ -62,7 +62,7 @@ const validateAddress = function (address) {
 }
 
 const validatePhoneNumber = function (phoneNumber) {
-    if(!phoneNumber || phoneNumber === ""){
+    if (!phoneNumber || phoneNumber === "") {
         let err = new Error('Please enter the phone number.');
         err.status = 400;
         throw err;
@@ -76,7 +76,7 @@ const validatePhoneNumber = function (phoneNumber) {
 }
 
 const validatePassword = function (password) {
-    if(password == ""){
+    if (password == "") {
         let err = new Error('Please enter the password.');
         err.status = 400;
         throw err;
@@ -89,4 +89,21 @@ const validatePassword = function (password) {
     }
 }
 
-module.exports = {validateFirstName, validateLastName, validateEmail, validateAddress, validatePhoneNumber,validatePassword};
+const validateUserType = function (userType) {
+    const validUserType = ['customer', 'admin'];
+    if (validUserType.indexOf(userType) === -1) {
+        let err = new Error('Invalid user type.');
+        err.status = 400;
+        throw err;
+    }
+}
+
+module.exports = {
+    validateFirstName,
+    validateLastName,
+    validateEmail,
+    validateAddress,
+    validatePhoneNumber,
+    validatePassword,
+    validateUserType
+};
