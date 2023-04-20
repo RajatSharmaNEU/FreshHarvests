@@ -4,7 +4,8 @@ import Circle from "../../Circle";
 import Triangle from "../../Triangle";
 import TextContent from "../../TextContent";
 import { Fade } from "react-awesome-reveal";
-import dealsImage from "../../../../images/dealsImage.jpg"
+//import dealsImage from "../../../../images/dealsImage.jpg"
+import dealsImage from "../../../../images/Discounts.png"
 import './Deals.scss';
 
 const Deals = () => {

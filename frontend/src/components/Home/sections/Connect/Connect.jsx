@@ -4,7 +4,8 @@ import Circle from "../../Circle";
 import Triangle from "../../Triangle";
 import TextContent from "../../TextContent";
 import { Fade } from "react-awesome-reveal";
-import mockup_college_feed from "../../../../images/connectImage.jpg"
+//import mockup_college_feed from "../../../../images/connectImage.jpg"
+import mockup_college_feed from "../../../../images/connect.png"
 import './Connect.scss';
 
 const Connect = () => {
