@@ -16,7 +16,7 @@ const Grocery = () => {
         const localCart = localStorage.getItem('cart');
         return localCart ? JSON.parse(localCart) : [];
     });
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(null);
     const [loader, setLoader] = useState(false);
     const [notify, setNotify] = useState(null);
 
@@ -24,7 +24,7 @@ const Grocery = () => {
         setLoader(true);
         axios.get("store/getAll")
             .then((result) => {
-                result.data && setItems(result.data[0].items);
+                result.data ? setItems(result.data[0].items): setItems([]);
                 setLoader(false);
             });
     }, []);
