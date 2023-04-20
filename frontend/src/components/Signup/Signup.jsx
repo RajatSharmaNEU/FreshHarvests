@@ -45,6 +45,10 @@ export default function SignUp() {
     const [showLoader, setShowLoader] = useState(false);
     const [uploadPercentage, setuploadPercentage] = useState(0);
 
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [passwordMatch, setPasswordMatch] = useState(true);
+
     const uploadProgressOptions = {
         onUploadProgress: (progressEvent) => {
             const {loaded, total} = progressEvent;
@@ -70,37 +74,50 @@ export default function SignUp() {
 
         let isSubscribed = true;
 
-        setShowLoader(true);
-        axios.post('/signup', values, uploadProgressOptions)
-            .then(response => {
-                console.log(response);
-                if (isSubscribed === true) {
-                    if (response.data.success === true) {
-                        setMessageHandler({...MessageHandler, message: response.data.message, status: true});
-                        handleClick();
-                        setTimeout(() => {
-                            localStorageService.setUser(values);
-                            localStorageService.setVerifiedUser("false");
-                            navigate("/grocery");
-                        }, 1000);
-                    } else {
-                        setMessageHandler({...MessageHandler, message: response.data.message, status: false});
+        if(!passwordMatch) {
+            setMessageHandler({...MessageHandler, message: 'Password do not match!!!', status: false});
+            handleClick();
+        } else {
+            setShowLoader(true);
+            axios.post('/signup', values, uploadProgressOptions)
+                .then(response => {
+                    console.log(response);
+                    if (isSubscribed === true) {
+                        if (response.data.success === true) {
+                            setMessageHandler({...MessageHandler, message: response.data.message, status: true});
+                            handleClick();
+                            setTimeout(() => {
+                                localStorageService.setUser(values);
+                                localStorageService.setVerifiedUser("false");
+                                navigate("/grocery");
+                            }, 1000);
+                        } else {
+                            setMessageHandler({...MessageHandler, message: response.data.message, status: false});
+                            handleClick();
+                        }
+                    }
+                    setShowLoader(false);
+                })
+                .catch(error => {
+                    if (isSubscribed === true) {
+                        console.log(error, error.response, error.message, error.request);
+                        setMessageHandler({...MessageHandler, message: error.response.data.message, status: false});
                         handleClick();
                     }
-                }
-                setShowLoader(false);
-            })
-            .catch(error => {
-                if (isSubscribed === true) {
-                    console.log(error, error.response, error.message, error.request);
-                    setMessageHandler({...MessageHandler, message: error.response.data.message, status: false});
-                    handleClick();
-                }
-                setShowLoader(false);
-            })
-        return () => (isSubscribed = false);
+                    setShowLoader(false);
+                })
+            return () => (isSubscribed = false);
+        }
+    };
 
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+        setPasswordMatch(event.target.value === confirmPassword);
+    };
 
+    const handleConfirmPasswordChange = (event) => {
+        setConfirmPassword(event.target.value);
+        setPasswordMatch(event.target.value === password);
     };
 
     const handleChange = (event) => {
@@ -108,6 +125,14 @@ export default function SignUp() {
             ...values,
             [event.target.name]: event.target.value,
         });
+
+        if(event.target.name === 'password') {
+            handlePasswordChange(event)
+        }
+
+        if(event.target.name === "confirmPassword") {
+            handleConfirmPasswordChange(event)
+        }
     };
 
     useEffect(() => {
@@ -220,6 +245,7 @@ export default function SignUp() {
                                                 autoComplete="new-password"
                                                 onChange={handleChange}
                                             />
+                                            {!passwordMatch && <p className="text-danger">Passwords do not match.</p>}
                                         </Grid>
                                         <Grid item xs={12}>
                                             <InputLabel id="demo-simple-select-label">
