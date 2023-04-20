@@ -58,7 +58,7 @@ function Login() {
                         setMessage({...message, message: response.data.message, status: true});
                         handleClick();
                         setTimeout(() => {
-                            localStorageService.setUser(response.data.data);
+                            localStorageService.setUser(response.data.user);
                             localStorage.setItem('getUser', true);
                             navigate("/grocery");
                         }, 1000);

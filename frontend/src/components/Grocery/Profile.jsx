@@ -1,20 +1,22 @@
-
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import localStorageService from '../../configs/localStorageService';
 import axios from '../../configs/axiosConfig';
+import Notify from "./Notify";
+
 const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 2rem;;
 `;
 
 const Textbox = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
+  width: 30%
 `;
 
 const Label = styled.label`
@@ -71,122 +73,130 @@ const ErrorMsg = styled.span`
 
 
 const Profile = () => {
-   
-    const savedUser =   localStorageService.getUser();
-    const user = JSON.parse(savedUser);
-    console.log(savedUser)  
 
+    const savedUser = localStorageService.getUser();
+    const user = JSON.parse(savedUser);
+    console.log(savedUser)
+
+    const [notify, setNotify] = useState("");
     const [editable, setEditable] = useState(false);
     const [firstName, setfirstName] = useState(user.firstName);
-    const [lastName,setlastName] = useState(user.lastName);
+    const [lastName, setlastName] = useState(user.lastName);
     const [email, setEmail] = useState(user.email);
-    const [address,setAddress] = useState(user.address);
+    const [address, setAddress] = useState(user.address);
     const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
     const [firstNameError, setfirstNameError] = useState('');
     const [lastNameError, setlastNameError] = useState('');
-    const [addresError,setAddressError] = useState('');
+    const [addresError, setAddressError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [phoneError, setPhoneError] = useState('');
-  
+
     const handleEdit = () => {
-      setEditable(!editable);
+        setEditable(!editable);
     };
-  
-  
+
+
     const handleSave = () => {
-      let nameRegex = /^[a-zA-Z\s]*$/;
-      let emailRegex = /\S+@\S+\.\S+/;
-      let phoneRegex = /^\d{10}$/;
-      let addressRegex = /^[A-Za-z0-9-]+$/;
-      let firstNameIsValid = nameRegex.test(firstName);
-      let lastNameIsValid =nameRegex.test(lastName);
-      let emailIsValid = emailRegex.test(email);
-      let phoneIsValid = phoneRegex.test(phoneNumber);
-      let addressIsValid = addressRegex.test(address);
-  
-      if (!firstNameIsValid) {
-        setfirstNameError('Please enter a valid first name');
-        return;
-      }
-      if (!lastNameIsValid) {
-        setlastNameError('Please enter a valid last name');
-        return;
-      }
-  
-      if (!emailIsValid) {
-        setEmailError('Please enter a valid email');
-        return;
-      }
-      if (!addressIsValid) {
-        setAddressError('Please enter a valid address');
-        return;
-      }
-  
-      if (!phoneIsValid) {
-        setPhoneError('Please enter a valid phone number');
-        return;
-      }
-      
-      let saveObject = {
-        "firstName":firstName,
-        "lastName":lastName,
-        "email":email,
-        "address":address,
-        "phoneNumber": phoneNumber,
-        "userType": user.userType,
-        "password":"Test@123"
-      }
-      localStorageService.setUser(saveObject);
-      axios.put('/edit',saveObject);
+        const nameRegex = /^[a-zA-Z\s]*$/;
+        const emailRegex = /\S+@\S+\.\S+/;
+        const phoneRegex = /^\d{10}$/;
+        const addressRegex = /^[a-zA-Z0-9\s,'-]*$/;
+        const firstNameIsValid = nameRegex.test(firstName);
+        const lastNameIsValid = nameRegex.test(lastName);
+        const emailIsValid = emailRegex.test(email);
+        const phoneIsValid = phoneRegex.test(phoneNumber);
+        const addressIsValid = addressRegex.test(address);
 
-  
-      setfirstNameError('');
-      setlastNameError('');
-      setEmailError('');
-      setAddressError('');
-      setPhoneError('');
-      setEditable(false);
+        if (!firstNameIsValid) {
+            setfirstNameError('Please enter a valid first name');
+            return;
+        }
+        if (!lastNameIsValid) {
+            setlastNameError('Please enter a valid last name');
+            return;
+        }
+
+        if (!emailIsValid) {
+            setEmailError('Please enter a valid email');
+            return;
+        }
+        if (!addressIsValid) {
+            setAddressError('Please enter a valid address');
+            return;
+        }
+
+        if (!phoneIsValid) {
+            setPhoneError('Please enter a valid phone number');
+            return;
+        }
+
+        let saveObject = {
+            "firstName": firstName,
+            "lastName": lastName,
+            "email": email,
+            "address": address,
+            "phoneNumber": phoneNumber,
+            "userType": user.userType,
+            "password": "Test@123"
+        }
+
+        axios.put('/edit', saveObject).then(() => {
+                localStorageService.setUser(saveObject);
+                setNotify("Profile updated successfully !!!");
+            }
+        )
+
+
+        setfirstNameError('');
+        setlastNameError('');
+        setEmailError('');
+        setAddressError('');
+        setPhoneError('');
+        setEditable(false);
     };
-  
-    return (
-      <ProfileContainer>
-        <h1>My Profile</h1>
-        <Textbox>
-          <Label>First Name:</Label>
-          <Field type="text" value={firstName} onChange={(e) => setfirstName(e.target.value)} readOnly={!editable} />
-          {firstNameError && <ErrorMsg>{firstNameError}</ErrorMsg>}
-        </Textbox>
-        <Textbox>
-          <Label>Last Name:</Label>
-          <Field type="text" value={lastName} onChange={(e) => setlastName(e.target.value)} readOnly={!editable} />
-          {lastNameError && <ErrorMsg>{lastNameError}</ErrorMsg>}
-        </Textbox>
-        
-        <Textbox>
-          <Label>Email:</Label>
-          <Field type="email" value={email} onChange={(e) => setEmail(e.target.value)} readOnly={true} disabled />
-          {emailError && <ErrorMsg>{emailError}</ErrorMsg>}
-        </Textbox>
-        <Textbox>
-          <Label>Address:</Label>
-          <Field type="text" value={address} onChange={(e) => setAddress(e.target.value)} readOnly={!editable} />
-          {addresError && <ErrorMsg>{addresError}</ErrorMsg>}
-        </Textbox>
-        <Textbox>
-          <Label>Phone Number:</Label>
-          <Field type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} readOnly={!editable} />
-          {phoneError && <ErrorMsg>{phoneError}</ErrorMsg>}
-        </Textbox>
-        {!editable && <EditButton onClick={handleEdit}>Edit</EditButton>}
-        {editable && (
-          <div>
-            <SaveButton onClick={handleSave}>Save</SaveButton>
-            <CancelButton onClick={handleEdit}>Cancel</CancelButton>
-          </div>
-        )}
-      </ProfileContainer>
-    );
-  };
 
-  export default Profile;
+    return (
+        <ProfileContainer>
+            <h1>My Profile</h1>
+            {notify.length > 0 && <Notify variant="success" message={notify} onCancel={() => setNotify("")}/>}
+            <Textbox>
+                <Label>First Name:</Label>
+                <Field type="text" value={firstName} onChange={(e) => setfirstName(e.target.value)}
+                       readOnly={!editable}/>
+                {firstNameError && <ErrorMsg>{firstNameError}</ErrorMsg>}
+            </Textbox>
+            <Textbox>
+                <Label>Last Name:</Label>
+                <Field type="text" value={lastName} onChange={(e) => setlastName(e.target.value)} readOnly={!editable}/>
+                {lastNameError && <ErrorMsg>{lastNameError}</ErrorMsg>}
+            </Textbox>
+
+            <Textbox>
+                <Label>Email:</Label>
+                <Field type="email" value={email} onChange={(e) => setEmail(e.target.value)} readOnly={true} disabled/>
+                {emailError && <ErrorMsg>{emailError}</ErrorMsg>}
+            </Textbox>
+            <Textbox>
+                <Label>Address:</Label>
+                <Field type="text" value={address} onChange={(e) => setAddress(e.target.value)} readOnly={!editable}/>
+                {addresError && <ErrorMsg>{addresError}</ErrorMsg>}
+            </Textbox>
+            <Textbox>
+                <Label>Phone Number:</Label>
+                <Field type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}
+                       readOnly={!editable}/>
+                {phoneError && <ErrorMsg>{phoneError}</ErrorMsg>}
+            </Textbox>
+            {!editable && <EditButton onClick={handleEdit}>Edit</EditButton>}
+            {editable && (
+                <div>
+                    <SaveButton onClick={handleSave}>Save</SaveButton>
+                    <CancelButton onClick={handleEdit}>Cancel</CancelButton>
+                </div>
+            )}
+        </ProfileContainer>
+    );
+};
+
+export default Profile;
   

@@ -3,7 +3,7 @@ import { Alert } from 'react-bootstrap';
 import { string } from 'prop-types';
 
 const Notify = (props) => {
-  const { variant, message } = props;
+  const { variant, message, onCancel } = props;
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -12,6 +12,7 @@ const Notify = (props) => {
 
   const onClose = () => {
     setShow(false);
+    onCancel && onCancel();
   };
 
   console.log('Notify Re-rendered');
