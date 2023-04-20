@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, {useRef, useState} from "react";
 import {Alert, Avatar, Box, Button, Grid, Paper, Snackbar, TextField, Typography} from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import axios from "../../configs/axiosConfig";
@@ -9,6 +9,7 @@ import localStorageService from "../../configs/localStorageService";
 const Register = () => {
     const [openSuccess, setOpenSuccess] = React.useState(false);
     const [openIncorrectOTP, setOpenIncorrectOTP] = React.useState(false);
+    const [otpMessage, setOtpMessage] = useState("");
     const form = useRef();
     const navigate = useNavigate();
 
@@ -35,16 +36,24 @@ const Register = () => {
     const handleVerifyOtp = async () => {
         const otp = document.getElementById("otp").value;
         const email = document.getElementById("email").value
-        try {
-            const result = await axios.post("/verify/verifyOtp", {email, otp});
-            if (result.status === 200) {
-                localStorageService.setVerifiedUser("true");
-                navigate("/signup");
-            } else {
-                setOpenIncorrectOTP(true);
-            }
-        } catch (e) {
+
+        if(!otp) {
             setOpenIncorrectOTP(true);
+            setOtpMessage("Please enter otp !!!");
+        } else {
+            try {
+                const result = await axios.post("/verify/verifyOtp", {email, otp});
+                if (result.status === 200) {
+                    localStorageService.setVerifiedUser("true");
+                    navigate("/signup");
+                } else {
+                    setOpenIncorrectOTP(true);
+                    setOtpMessage(result.data.message)
+                }
+            } catch (e) {
+                setOpenIncorrectOTP(true);
+                setOtpMessage(e.response.data.message)
+            }
         }
     };
 
@@ -147,7 +156,7 @@ const Register = () => {
                                     severity="error"
                                     sx={{width: "100%"}}
                                 >
-                                    Incorrect OTP!
+                                    {otpMessage}
                                 </Alert>
                             </Snackbar>
                         </form>
