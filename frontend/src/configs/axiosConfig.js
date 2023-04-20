@@ -2,7 +2,7 @@ import axios from 'axios';
 import localStorageService from './localStorageService';
 
 const instance = axios.create({
-    baseURL: process.env.API
+    baseURL: process.env.REACT_APP_API
 });
 
 instance.interceptors.request.use(
