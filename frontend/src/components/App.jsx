@@ -15,8 +15,8 @@ function App() {
                 <Route exact path="/" Component={Home}/>
                 <Route exact path="/login" Component={Login}/>
                 <Route exact path="/register" Component={Register}/>
-                <Route element={<ProtectedRoutes />}>
                 <Route exact path="/signup" Component={Signup}/>
+                <Route element={<ProtectedRoutes />}>
                 <Route exact path="/grocery/*" Component={Grocery}/>
                 </Route>
             </Routes>
