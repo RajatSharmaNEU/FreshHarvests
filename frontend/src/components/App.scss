@@ -243,7 +243,7 @@ a:hover {
 
 .feature_section .feature_model {
   width: 12rem;
-  height: auto;
+  height: 100px;
 }
 
 /*end sections*/
@@ -1018,7 +1018,26 @@ footer a {
 }
 
 .footer_logo {
+  float: left;
   text-align: left;
+  position: relative;
+  display: inline-block;
+}
+.footer_logo:hover {
+  color:#6d6bdb; /* Set color on hover */
+}
+.footer_logo:hover:after {
+  content: "Upcoming Updates";
+  display: block;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px;
+  background-color: black;
+  color: white;
+  font-size: 12px;
+  white-space: nowrap;
 }
 
 .footer_social a {
@@ -2824,6 +2843,47 @@ form.login_form,
   }
 }
 
+// @media (max-width: 767px) {
+//   .menu-icons {
+//     display: block !important;
+//   }
+
+//   .navbar-expand-lg .navbar-toggler {
+//     display: block;
+//     z-index: 9999;
+//   }
+
+//   .navbar-expand-lg .navbar-toggler.active {
+//     position: fixed;
+//     right: 15px;
+//   }
+
+//   .btn-primary {
+//     color: #fff;
+//   }
+
+//   .navbar-collapse {
+//     position: absolute;
+//     width: 100% !important;
+//     top: -115vh;
+//     padding: 0rem 1rem;
+//     z-index: 9;
+//     min-height: auto;
+//     transition: all 0.3s ease-in-out;
+//     box-shadow: none;
+//   }
+
+//   .navbar-expand-lg .navbar-nav.main_menu li a {
+//     border-bottom: 1px solid #fff;
+//     padding: 0.5rem 0rem 0.5rem;
+//     color: #fff;
+//   }
+
+//   .navbar-light .navbar-toggler {
+//     display: flex;
+//     flex-direction: column;
+//   }
+// }
 @media (max-width: 767px) {
   .menu-icons {
     display: block !important;
@@ -2848,7 +2908,7 @@ form.login_form,
     width: 100% !important;
     top: -115vh;
     padding: 0rem 1rem;
-    z-index: 9;
+    z-index: 100;
     min-height: auto;
     transition: all 0.3s ease-in-out;
     box-shadow: none;
@@ -2865,6 +2925,7 @@ form.login_form,
     flex-direction: column;
   }
 }
+
 
 @media (max-width: 767px) {
   .menu-icons {
@@ -3113,9 +3174,29 @@ form.login_form,
   }
 
   .footer_logo {
+    float: left;
     text-align: center;
     padding-bottom: 1rem;
+    position: relative;
+    display: inline-block;
   }
+  .footer_logo:hover {
+    color:#6d6bdb; /* Set color on hover */
+  }
+  .footer_logo:hover:after {
+    content: "Upcoming Updates";
+    display: block;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px;
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  
 
   footer p,
   footer a {
@@ -3188,31 +3269,59 @@ form.login_form,
   } */
 }
 
-@media (max-width: 375px) {
+// @media (max-width: 375px) {
+//   .menu-icons {
+//     display: block !important;
+//   }
+
+//   .app_img .svg1 {
+//     left: 0.6rem;
+//     bottom: -8.3rem;
+//     width: 21rem;
+//   }
+
+//   .font_35 {
+//     font-size: 1.1rem;
+//   }
+
+//   .about_app h4 {
+//     margin: 1.5rem 0rem 2rem;
+//   }
+
+//   .home_section3 .svg5 {
+//     left: 15rem;
+//     width: 14rem;
+//     top: -13rem;
+//   }
+// }
+@media screen and (max-width: 375px) {
   .menu-icons {
-    display: block !important;
+  display: block !important;
+  z-index: 10; /* set a higher z-index value to make sure the menu icons are on top of other elements */
   }
-
+  
   .app_img .svg1 {
-    left: 0.6rem;
-    bottom: -8.3rem;
-    width: 21rem;
+  left: 0.6rem;
+  bottom: -8.3rem;
+  width: 21rem;
+  z-index: -1; /* set a lower z-index value to make sure the image doesn't overlap other elements */
   }
-
+  
   .font_35 {
-    font-size: 1.1rem;
+  font-size: 1.1rem;
   }
-
+  
   .about_app h4 {
-    margin: 1.5rem 0rem 2rem;
+  margin: 1.5rem 0rem 2rem;
   }
-
+  
   .home_section3 .svg5 {
-    left: 15rem;
-    width: 14rem;
-    top: -13rem;
+  left: 15rem;
+  width: 14rem;
+  top: -13rem;
+  z-index: -1; /* set a lower z-index value to make sure the image doesn't overlap other elements */
   }
-}
+  }
 
 @media (max-width: 360px) {
   .menu-icons {

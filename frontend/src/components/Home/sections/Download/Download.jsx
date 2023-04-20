@@ -13,8 +13,8 @@ export class Download extends Component {
                             <h1 style={{ marginBottom: 0 }}>Get it now</h1>
                             <p>Available on all native App Store</p>
                             <div className="img-container">
-                                <img alt="apple store" style={{ margin: 'none' }} src={appleStoreBadge} />&nbsp;&nbsp;
-                                <img alt="play store" style={{ margin: 'none' }} src={playStoreBadge} />
+                            <a href="https://www.apple.com/app-store/"><img alt="apple store" style={{ margin: 'none' }} src={appleStoreBadge} /></a>&nbsp;&nbsp;
+                                <a href="https://play.google.com/store/apps/"><img alt="play store" style={{ margin: 'none' }} src={playStoreBadge} /></a>
                             </div>
                         </div>
                     </div>

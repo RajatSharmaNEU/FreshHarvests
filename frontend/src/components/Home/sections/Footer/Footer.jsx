@@ -28,19 +28,17 @@ const Footer = () => {
         <div className="row">
           <div className="col-md-4 order-md-1">
             <div className="footer_logo">
-              <EmojiEventsIcon />
+            <EmojiEventsIcon />
             </div>
           </div>
           <div className="col-md-4 order-md-3 my-auto">
-            <Google />
+          <a href="https://play.google.com/store/apps/"><Google /></a>
           </div>
           <div className="col-md-4 order-md-2">
-            <div className="footer_social">
-              <TwitterIcon />
-              <FacebookIcon />
-              <InstagramIcon />
-              <LinkedInIcon />
-            </div>
+          <a href="https://twitter.com"><TwitterIcon /> </a>
+          <a href="https://www.facebook.com"><FacebookIcon /></a>
+          <a href="https://www.instagram.com"><InstagramIcon /></a>
+          <a href="https://www.linkedin.com"><LinkedInIcon /></a>
           </div>
           <div className="col-md-12 order-md-4">
             <div className="copy_right">

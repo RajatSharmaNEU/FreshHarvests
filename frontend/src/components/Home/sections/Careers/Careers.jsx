@@ -3,7 +3,7 @@ import Images from "../../Images";
 import Circle from "../../Circle";
 import TextContent from "../../TextContent";
 import { Fade } from "react-awesome-reveal";
-import EventsImage from "../../../../images/EventsImage.jpg";
+import EventsImage from "../../../../images/newImages/Image3.png";
 
 const Careers = () => {
   return (

@@ -3,7 +3,7 @@ import Images from "../../Images";
 import Circle from "../../Circle";
 import Triangle from "../../Triangle";
 import TextContent from "../../TextContent";
-import EventsImage from "../../../../images/EventsImage.jpg";
+import EventsImage from "../../../../images/newImages/Image2.png";
 import { Fade } from "react-awesome-reveal";
 
 const Events = () => {
