@@ -27,6 +27,7 @@ const localStorageService = {
         localStorage.removeItem('User');
         localStorage.removeItem('Token');
         localStorage.removeItem('verifiedUser');
+        localStorage.removeItem('getUser');
     },
 }
 

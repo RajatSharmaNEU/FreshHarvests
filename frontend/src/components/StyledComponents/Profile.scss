@@ -1,0 +1,57 @@
+.profile-container {
+    margin: 50px auto;
+    width: 50%;
+  }
+  
+  .profile-heading {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-info > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+  }
+  
+  .profile-info > div > p {
+    font-size: 1.2rem;
+    margin-right: 20px;
+  }
+  
+  .profile-info > div > input[type="text"] {
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 60%;
+    color: #000;
+  }
+  
+  .profile-info > div > input[type="text"]:read-only {
+    border: none;
+  }
+  
+  .profile-info > div > button {
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .profile-info > div > button:hover {
+    background-color: #0069d9;
+  }
+  

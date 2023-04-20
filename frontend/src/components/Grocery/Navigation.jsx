@@ -5,6 +5,7 @@ import {arrayOf} from 'prop-types';
 import itemShape from '../../proptypes/item';
 import CartIcon from '../../images/cart.svg';
 import logoImage from "../../images/agronomy.png";
+import localStorageService from '../../configs/localStorageService';
 
 const Navigation = (props) => {
     const {cart} = props;
@@ -32,6 +33,9 @@ const Navigation = (props) => {
                 </Nav>
                 <Nav className="mr-auto">
                     <Link to="/grocery/profile" className="nav-link">Profile</Link>
+                </Nav>
+                <Nav className="mr-auto">
+                    <Link to="/grocery/logout" className="nav-link" onClick={() => localStorageService.removeSessionData()}>Logout</Link>
                 </Nav>
                 <Nav >
                     <Link to="/grocery/cart">

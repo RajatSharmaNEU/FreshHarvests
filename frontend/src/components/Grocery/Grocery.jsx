@@ -64,6 +64,7 @@ const Grocery = () => {
                 <Route exact path="manage" element={<Manage/>}/>
                 <Route path="*" element={<Navigate to="items"/>}/>
                 <Route exact path="profile" element={<Profile />} />
+                <Route exact path="/logout" element={<div ><Navigate to="/" /></div>} />
                 <Route path="*" element={<Navigate to="items" />} />
             </Routes>
         </Container>
