@@ -9,6 +9,7 @@ import Notify from "./Notify";
 import axios from "../../configs/axiosConfig";
 import Manage from "./Manage";
 import Profile from './Profile';
+import localStorageService from "../../configs/localStorageService";
 
 const Grocery = () => {
     const [cart, setCart] = useState(() => {
@@ -61,11 +62,15 @@ const Grocery = () => {
                 />
                 <Route exact path="cart"
                        element={<Cart cart={cart} setCart={setCart} setLoader={setLoader} setNotify={setNotify}/>}/>
-                <Route exact path="manage" element={<Manage/>}/>
+                {
+                    localStorageService.getUser()?.userType === 'admin' &&
+                    <Route exact path="manage" element={<Manage/>}/>
+                }
+
                 <Route path="*" element={<Navigate to="items"/>}/>
-                <Route exact path="profile" element={<Profile />} />
-                <Route exact path="/logout" element={<div ><Navigate to="/" /></div>} />
-                <Route path="*" element={<Navigate to="items" />} />
+                <Route exact path="profile" element={<Profile/>}/>
+                <Route exact path="/logout" element={<div><Navigate to="/"/></div>}/>
+                <Route path="*" element={<Navigate to="items"/>}/>
             </Routes>
         </Container>
     );

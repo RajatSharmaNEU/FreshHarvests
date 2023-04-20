@@ -4,7 +4,7 @@ const localStorageService = {
     },
 
     getUser() {
-        return localStorage.getItem('User');
+        return JSON.parse(localStorage.getItem('User'));
     },
 
     setToken(token) {

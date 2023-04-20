@@ -28,16 +28,20 @@ const Navigation = (props) => {
                 <Nav className="mr-auto">
                     <Link to="/grocery/" className="nav-link">Store</Link>
                 </Nav>
-                <Nav className="mr-auto">
-                    <Link to="/grocery/manage" className="nav-link">Manage</Link>
-                </Nav>
+                {
+                    localStorageService.getUser()?.userType === 'admin' &&
+                    <Nav className="mr-auto">
+                        <Link to="/grocery/manage" className="nav-link">Manage</Link>
+                    </Nav>
+                }
                 <Nav className="mr-auto">
                     <Link to="/grocery/profile" className="nav-link">Profile</Link>
                 </Nav>
                 <Nav className="mr-auto">
-                    <Link to="/grocery/logout" className="nav-link" onClick={() => localStorageService.removeSessionData()}>Logout</Link>
+                    <Link to="/grocery/logout" className="nav-link"
+                          onClick={() => localStorageService.removeSessionData()}>Logout</Link>
                 </Nav>
-                <Nav >
+                <Nav>
                     <Link to="/grocery/cart">
                         <Button variant="tertiary">
                             <Badge variant="light">{cartItems}</Badge>

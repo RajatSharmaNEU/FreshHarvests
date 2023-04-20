@@ -74,10 +74,7 @@ const ErrorMsg = styled.span`
 
 const Profile = () => {
 
-    const savedUser = localStorageService.getUser();
-    const user = JSON.parse(savedUser);
-    console.log(savedUser)
-
+    const user = localStorageService.getUser();
     const [notify, setNotify] = useState("");
     const [editable, setEditable] = useState(false);
     const [firstName, setfirstName] = useState(user.firstName);
@@ -94,7 +91,6 @@ const Profile = () => {
     const handleEdit = () => {
         setEditable(!editable);
     };
-
 
     const handleSave = () => {
         const nameRegex = /^[a-zA-Z\s]*$/;
