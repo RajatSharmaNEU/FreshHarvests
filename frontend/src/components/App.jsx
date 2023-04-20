@@ -6,6 +6,7 @@ import Register from "./Register/Register";
 import Signup from "./Signup/Signup";
 import Grocery from "./Grocery/Grocery";
 import "./App.scss";
+import ProtectedRoutes from "./ProtectedRoutes";
 
 function App() {
     return (
@@ -14,8 +15,10 @@ function App() {
                 <Route exact path="/" Component={Home}/>
                 <Route exact path="/login" Component={Login}/>
                 <Route exact path="/register" Component={Register}/>
+                <Route element={<ProtectedRoutes />}>
                 <Route exact path="/signup" Component={Signup}/>
                 <Route exact path="/grocery/*" Component={Grocery}/>
+                </Route>
             </Routes>
         </Router>
     );

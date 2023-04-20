@@ -59,6 +59,7 @@ function Login() {
                         handleClick();
                         setTimeout(() => {
                             localStorageService.setUser(response.data.data);
+                            localStorage.setItem('getUser', true);
                             navigate("/grocery");
                         }, 1000);
                     } else {
