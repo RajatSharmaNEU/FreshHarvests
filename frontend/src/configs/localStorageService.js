@@ -23,11 +23,20 @@ const localStorageService = {
         return localStorage.getItem('verifiedUser');
     },
 
+    setEmail(email) {
+        localStorage.setItem('email', email);
+    },
+
+    getEmail() {
+        return localStorage.getItem('email');
+    },
+
     removeSessionData() {
         localStorage.removeItem('User');
         localStorage.removeItem('Token');
         localStorage.removeItem('verifiedUser');
         localStorage.removeItem('getUser');
+        localStorage.removeItem('email');
     },
 }
 

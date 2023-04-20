@@ -45,6 +45,7 @@ const Register = () => {
                 const result = await axios.post("/verify/verifyOtp", {email, otp});
                 if (result.status === 200) {
                     localStorageService.setVerifiedUser("true");
+                    localStorageService.setEmail(email);
                     navigate("/signup");
                 } else {
                     setOpenIncorrectOTP(true);

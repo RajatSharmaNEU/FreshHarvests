@@ -79,6 +79,7 @@ export default function SignUp() {
             handleClick();
         } else {
             setShowLoader(true);
+            values.email = localStorageService.getEmail();
             axios.post('/signup', values, uploadProgressOptions)
                 .then(response => {
                     console.log(response);
@@ -215,9 +216,9 @@ export default function SignUp() {
                                                 id="email"
                                                 label="Email Address"
                                                 name="email"
-                                                value={values.email}
+                                                value={localStorageService.getEmail()}
                                                 autoComplete="email"
-                                                onChange={handleChange}
+                                                disabled
                                             />
                                         </Grid>
                                         <Grid item xs={12}>
