@@ -14,6 +14,7 @@ const adminRouter = require('./app/routes/adminRoute');
 
 mongoose.connect(process.env.DATABASE_LOCAL_URL, {useNewUrlParser: true})
     .then(() => {
+        const PORT = process.env.PORT || 9001;
         app.use(cors());
         app.use(bodyParser.urlencoded({extended: true}));
         app.use(bodyParser.json());
@@ -24,8 +25,9 @@ mongoose.connect(process.env.DATABASE_LOCAL_URL, {useNewUrlParser: true})
         app.use("/verify", verifyRouter);
         app.use("/admin", adminRouter);
 
-        app.listen(9001);
-        console.log("Server Started at port 9001");
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
+        });
     })
     .catch(e => {
         console.log(e);

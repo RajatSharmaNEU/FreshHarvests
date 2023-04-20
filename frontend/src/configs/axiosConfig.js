@@ -2,7 +2,7 @@ import axios from 'axios';
 import localStorageService from './localStorageService';
 
 const instance = axios.create({
-    baseURL: 'http://localhost:9001/'
+    baseURL: process.env.API
 });
 
 instance.interceptors.request.use(
