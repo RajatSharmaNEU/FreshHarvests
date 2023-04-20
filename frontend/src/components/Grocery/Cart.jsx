@@ -12,7 +12,8 @@ const Cart = (props) => {
         return sum + (cartItem.quantity * cartItem.price);
     }, 0);
 
-    const paymentOption = {"client-id": "AWK7N4wJjB-s8maW8W3RUPRuYHcdSxVUr9jCsAa-Z27n_KffN555BU9vzgdiwDfG1KRLeOkogVfPj2cm"};
+    const paymentOption = {"client-id": process.env.REACT_APP_PAYMENT};
+
     const handleCreateOrder = (data, actions) => {
         return actions.order.create({
             purchase_units: [
