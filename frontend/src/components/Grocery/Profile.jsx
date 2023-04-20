@@ -82,10 +82,12 @@ const Profile = () => {
     const [firstName, setfirstName] = useState(user.firstName);
     const [lastName, setlastName] = useState(user.lastName);
     const [email, setEmail] = useState(user.email);
+    const [password, setPassword] = useState("********");
     const [address, setAddress] = useState(user.address);
     const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
     const [firstNameError, setfirstNameError] = useState('');
     const [lastNameError, setlastNameError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
     const [addresError, setAddressError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [phoneError, setPhoneError] = useState('');
@@ -96,12 +98,14 @@ const Profile = () => {
         setfirstName(firstName);
         setlastName(lastName);
         setEmail(email);
+        setPassword("********");
         setAddress(address);
         setPhoneNumber(phoneNumber);
         setfirstNameError('');
         setlastNameError('');
         setEmailError('');
         setAddressError('');
+        setPasswordError('')
         setPhoneError('');
     };
 
@@ -120,6 +124,7 @@ const Profile = () => {
         const emailIsValid = emailRegex.test(email);
         const phoneIsValid = phoneRegex.test(phoneNumber);
         const addressIsValid = addressRegex.test(address);
+        const passwordIsValid = passwordRegex.test(password);
 
         if (!firstNameIsValid) {
             setfirstNameError('Please enter a valid first name');
@@ -139,6 +144,11 @@ const Profile = () => {
             return;
         }
 
+        if (!passwordIsValid) {
+            setPasswordError('Please enter a valid password');
+            return;
+        }
+
         if (!phoneIsValid) {
             setPhoneError('Please enter a valid phone number');
             return;
@@ -151,7 +161,7 @@ const Profile = () => {
             "address": address,
             "phoneNumber": phoneNumber,
             "userType": user.userType,
-            "password": "Test@123"
+            "password": password
         }
 
         axios.put('/edit', saveObject).then(() => {
@@ -166,6 +176,7 @@ const Profile = () => {
         setlastNameError('');
         setEmailError('');
         setAddressError('');
+        setPasswordError('');
         setPhoneError('');
         setEditable(false);
     };
@@ -194,6 +205,11 @@ const Profile = () => {
                 <Label>Email:</Label>
                 <Field type="email" value={email} onChange={(e) => setEmail(e.target.value)} readOnly={true} disabled/>
                 {emailError && <ErrorMsg>{emailError}</ErrorMsg>}
+            </Textbox>
+            <Textbox>
+                <Label>Password:</Label>
+                <Field type="password" value={password} onChange={(e) => setPassword(e.target.value)} readOnly={!editable}/>
+                {passwordError && <ErrorMsg>{passwordError}</ErrorMsg>}
             </Textbox>
             <Textbox>
                 <Label>Address:</Label>
