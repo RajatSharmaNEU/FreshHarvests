@@ -89,8 +89,8 @@ export default function SignUp() {
                             handleClick();
                             setTimeout(() => {
                                 localStorageService.setUser(values);
-                                localStorageService.setVerifiedUser("false");
-                                navigate("/grocery");
+                                localStorageService.removeSessionData();
+                                navigate("/login");
                             }, 1000);
                         } else {
                             setMessageHandler({...MessageHandler, message: response.data.message, status: false});
