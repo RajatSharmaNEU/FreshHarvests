@@ -8,6 +8,7 @@ import Loader from "./Loader";
 import Notify from "./Notify";
 import axios from "../../configs/axiosConfig";
 import Manage from "./Manage";
+import Profile from './Profile';
 
 const Grocery = () => {
     const [cart, setCart] = useState(() => {
@@ -62,6 +63,8 @@ const Grocery = () => {
                        element={<Cart cart={cart} setCart={setCart} setLoader={setLoader} setNotify={setNotify}/>}/>
                 <Route exact path="manage" element={<Manage/>}/>
                 <Route path="*" element={<Navigate to="items"/>}/>
+                <Route exact path="profile" element={<Profile />} />
+                <Route path="*" element={<Navigate to="items" />} />
             </Routes>
         </Container>
     );
