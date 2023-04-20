@@ -24,11 +24,11 @@ const loginController = {
                     throw err;
                 }
                 if (result) {
-                    const {firstName, lastName, email, address, phoneNumber} = existingUser;
+                    const {firstName, lastName, email, address, phoneNumber, userType} = existingUser;
                     res.status(200).send({
                         success: true,
                         message: "User authenticated successfully.",
-                        user: {firstName, lastName, email, address, phoneNumber}
+                        user: {firstName, lastName, email, address, phoneNumber, userType}
                     });
                 } else {
                     res.status(401);
