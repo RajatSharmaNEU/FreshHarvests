@@ -26,12 +26,12 @@ function App() {
 
     return (
         <Container>
-            <Form onSubmit={handleFileSubmit}>
+            <Form>
                 <Form.Group controlId="formFile">
                     <Form.Label>Choose Grocery Item</Form.Label>
                     <Form.Control type="file" onChange={handleFileUpload} />
                 </Form.Group>
-                <Button variant="primary">
+                <Button variant="primary" onClick={handleFileSubmit}>
                     Upload
                 </Button>
             </Form>

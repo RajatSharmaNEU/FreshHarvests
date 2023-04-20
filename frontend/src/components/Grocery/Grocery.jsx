@@ -23,7 +23,7 @@ const Grocery = () => {
         setLoader(true);
         axios.get("store/getAll")
             .then((result) => {
-                setItems(result.data[0].items);
+                result.data && setItems(result.data[0].items);
                 setLoader(false);
             });
     }, []);
