@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import localStorageService from '../../configs/localStorageService';
 import axios from '../../configs/axiosConfig';
-import Notify from "./Notify";
+import Snackbar from "../SnackBar/SnackBar";
 
 const ProfileContainer = styled.div`
   display: flex;
@@ -76,6 +76,8 @@ const Profile = () => {
 
     const user = localStorageService.getUser();
     const [notify, setNotify] = useState("");
+    const [open, setOpen] = useState(false);
+
     const [editable, setEditable] = useState(false);
     const [firstName, setfirstName] = useState(user.firstName);
     const [lastName, setlastName] = useState(user.lastName);
@@ -92,6 +94,9 @@ const Profile = () => {
         setEditable(!editable);
     };
 
+    const handleClose = () => {
+        setOpen(false);
+    }
     const handleSave = () => {
         const nameRegex = /^[a-zA-Z\s]*$/;
         const emailRegex = /\S+@\S+\.\S+/;
@@ -139,6 +144,7 @@ const Profile = () => {
         axios.put('/edit', saveObject).then(() => {
                 localStorageService.setUser(saveObject);
                 setNotify("Profile updated successfully !!!");
+                setOpen(true);
             }
         )
 
@@ -154,7 +160,11 @@ const Profile = () => {
     return (
         <ProfileContainer>
             <h1>My Profile</h1>
-            {notify.length > 0 && <Notify variant="success" message={notify} onCancel={() => setNotify("")}/>}
+            {
+                open &&
+                <Snackbar handleClose={handleClose} status={true} message={notify}
+                          openStatus={open}/>
+            }
             <Textbox>
                 <Label>First Name:</Label>
                 <Field type="text" value={firstName} onChange={(e) => setfirstName(e.target.value)}
