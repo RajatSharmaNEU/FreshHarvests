@@ -90,18 +90,31 @@ const Profile = () => {
     const [emailError, setEmailError] = useState('');
     const [phoneError, setPhoneError] = useState('');
 
-    const handleEdit = () => {
+    const handleCancel = () => {
         setEditable(!editable);
+        const {firstName, lastName, email, address, phoneNumber} = localStorageService.getUser();
+        setfirstName(firstName);
+        setlastName(lastName);
+        setEmail(email);
+        setAddress(address);
+        setPhoneNumber(phoneNumber);
+        setfirstNameError('');
+        setlastNameError('');
+        setEmailError('');
+        setAddressError('');
+        setPhoneError('');
     };
 
     const handleClose = () => {
         setOpen(false);
     }
     const handleSave = () => {
-        const nameRegex = /^[a-zA-Z\s]*$/;
-        const emailRegex = /\S+@\S+\.\S+/;
-        const phoneRegex = /^\d{10}$/;
+        const nameRegex = /^[a-zA-Z]+(?:[\s.]+[a-zA-Z]+)*$/;
+        const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const addressRegex = /^[a-zA-Z0-9\s,'-]*$/;
+        const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+
         const firstNameIsValid = nameRegex.test(firstName);
         const lastNameIsValid = nameRegex.test(lastName);
         const emailIsValid = emailRegex.test(email);
@@ -193,11 +206,11 @@ const Profile = () => {
                        readOnly={!editable}/>
                 {phoneError && <ErrorMsg>{phoneError}</ErrorMsg>}
             </Textbox>
-            {!editable && <EditButton onClick={handleEdit}>Edit</EditButton>}
+            {!editable && <EditButton onClick={handleCancel}>Edit</EditButton>}
             {editable && (
                 <div>
                     <SaveButton onClick={handleSave}>Save</SaveButton>
-                    <CancelButton onClick={handleEdit}>Cancel</CancelButton>
+                    <CancelButton onClick={handleCancel}>Cancel</CancelButton>
                 </div>
             )}
         </ProfileContainer>
