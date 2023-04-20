@@ -10,6 +10,7 @@ import localStorageService from '../../configs/localStorageService';
 const Navigation = (props) => {
     const {cart} = props;
     const cartItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const firstName = localStorageService.getUser()?.firstName;
     return (
         <Navbar bg="info" expand>
             <Link to="/">
@@ -54,6 +55,7 @@ const Navigation = (props) => {
                         </Button>
                     </Link>
                 </Nav>
+                {firstName && firstName.length > 0 && <Navbar.Text className="text-dark p-3" ><strong>Welcome, {firstName}</strong></Navbar.Text>}
             </Navbar.Collapse>
         </Navbar>
     );

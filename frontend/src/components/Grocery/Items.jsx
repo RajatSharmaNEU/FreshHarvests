@@ -7,7 +7,6 @@ import Loader from "./Loader";
 
 const Items = (props) => {
     const {items, addItem, removeItem, cart} = props;
-    console.log('Items Re-rendered');
     return (
         <>
             {
@@ -39,7 +38,7 @@ const Items = (props) => {
 
 
 Items.propTypes = {
-    items: arrayOf(itemShape).isRequired,
+    items: arrayOf(itemShape),
     cart: arrayOf(itemShape).isRequired,
     addItem: func.isRequired,
     removeItem: func.isRequired,

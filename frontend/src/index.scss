@@ -14,9 +14,9 @@ body {
   --open-sans-font-family: "open sans", sans-serif;
 }
 
-* {
-  z-index: 1;
-}
+//*, *::before, *::after {
+//  z-index: 0;
+//}
 
 button:not(:disabled).chakra-modal__close-btn {
   justify-content: end;
